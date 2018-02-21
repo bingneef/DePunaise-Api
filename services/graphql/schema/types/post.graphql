@@ -1,0 +1,34 @@
+type Post {
+  id: String
+  externalId: String
+  title: String
+  content: [String]
+  imageSized(size: String = "banner-sm"): Image
+  excerpt(size: Int = 50): String
+  pubDate: String
+  pubDateTimestamp: Float
+}
+
+type Image {
+  url: String
+  size: String
+  width: Int
+  height: Int
+  colorScheme: [String]
+}
+
+type Feed {
+  totalCount: Int
+  feed: [Post]
+}
+
+type Query {
+  postById(postId: String!): Post
+  posts(
+              featured: Boolean = false,
+              tag: String,
+              notTag: String,
+              cursor: Int = 0,
+              limit: Int = 10
+            ): Feed
+}

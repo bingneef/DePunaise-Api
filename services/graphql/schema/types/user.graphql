@@ -1,0 +1,39 @@
+input UserInput {
+  email: String
+  familyName: String
+  givenName: String
+  name: String
+  photoUrl: String
+  externalId: String
+}
+
+input NotificationsInput {
+  pushToken: String
+  newsAlerts: Boolean
+}
+
+type Notifications {
+  pushToken: String
+  newsAlerts: Boolean
+}
+
+type User {
+  email: String
+  familyName: String
+  givenName: String
+  name: String
+  photoUrl: String
+  token: String
+  externalId: String
+  notifications: Notifications
+}
+
+type Query {
+  currentUser: User
+}
+
+type Mutation {
+  createOrUpdateUser(user: UserInput): User
+  validateToken(token: String): User
+  setNotifications(notifications: NotificationsInput): Notifications
+}

@@ -1,0 +1,11 @@
+{
+  "apps": [
+    {
+      "script": "app.js",
+      "name": "DePunaise",
+      "instances": "max",
+      "watch": false
+    }
+  ]
+}
+
