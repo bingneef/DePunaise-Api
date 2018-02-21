@@ -53,7 +53,7 @@ export const perform = async () => {
         pubDate: item.created_time,
       }
 
-      if (item.fullPicture) {
+      if (item.full_picture) {
         const images = await handleNewImages(item.full_picture, item.id)
 
         payload = {
@@ -87,8 +87,6 @@ const handleNewImages = async (url, id) => {
       colors = await getColors(url)
       colors = colors.map(color => color.hex())
     } catch (e) { }
-
-    console.log(url)
 
     const response = await axios.get(url, { responseType: 'arraybuffer' })
     if (!fs.existsSync(`${baseDir}/${imageDir}`)) {

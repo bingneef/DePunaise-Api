@@ -1,5 +1,6 @@
 import { Post } from'../../../../models/Post'
 import mongoose from 'mongoose'
+import constants from '../../../../config/constants'
 
 export default {
   Query: {
@@ -22,6 +23,6 @@ export default {
     imageSized: (post, { size }) => post.images.filter(image => image.size == size)[0] || {},
   },
   Image: {
-    url: post => `http://192.168.0.105:4000/assets/${post.path}`,
+    url: post => `${constants.staticUrl}/assets/${post.path}`,
   },
 }
