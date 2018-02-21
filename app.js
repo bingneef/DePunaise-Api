@@ -27,15 +27,15 @@ if (process.env.NODE_ENV === undefined) {
   process.env.NODE_ENV = 'dev'
 }
 
-const serverPort = constants.serverPort
+const { serverPort, baseUrl, version, tokens } = constants
 
 const app = new Koa()
 
 // Apollo Engine
-if (constants.tokens.apolloEngine) {
+if (tokens.apolloEngine) {
   const engine = new Engine({
     engineConfig: {
-      apiKey: constants.tokens.apolloEngine,
+      apiKey: tokens.apolloEngine,
       logging: {
         level: 'info'
       },
@@ -76,7 +76,7 @@ if (!module.parent) {
 
   initCron()
 
-  console.log(`GraphQL Server is now running on ${constants.baseUrl}:${serverPort}`)
-  console.log(`Version: ${constants.version}`)
+  console.log(`GraphQL Server is now running on ${baseUrl}:${serverPort}`)
+  console.log(`Version: ${version}`)
   console.log(`Environment: ${(process.env.NODE_ENV)}`)
 }

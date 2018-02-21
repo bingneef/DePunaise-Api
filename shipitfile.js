@@ -17,9 +17,10 @@ module.exports = function (shipit) {
         remote: true,
       },
       shared: {
-        overwrite: false,
+        overwrite: true,
         files: [
-          'app.json'
+          'app.json',
+          '.env',
         ],
         dirs: [
           'public/assets/post',
