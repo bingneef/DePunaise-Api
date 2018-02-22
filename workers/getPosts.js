@@ -16,7 +16,7 @@ const splitMessage = message => {
   }
 }
 
-export const perform = async () => {
+export const getPosts = async () => {
   let posts = []
   let containsNewPost = false
 
@@ -139,4 +139,4 @@ const resizeImage = async (data, baseDir, imageDir, {size, width, height}) => {
   }
 }
 
-if (!module.parent) perform()
+if (!module.parent) getPosts()
