@@ -12,7 +12,7 @@ const splitMessage = message => {
 
   return {
     title: parts.shift(),
-    content: parts.join('\n').split('\n'),
+    content: parts.join('\n').split('\n').reduce(item => !item),
   }
 }
 
@@ -23,7 +23,7 @@ export const getPosts = async () => {
   try {
     const response = await axios.get('https://graph.facebook.com/v2.12/me', {
       params: {
-        fields: "id,name,posts.limit(50){message,full_picture,created_time}",
+        fields: "id,name,posts.limit(5){message,full_picture,created_time}",
         access_token: facebookKey,
       }
     })
@@ -46,6 +46,11 @@ export const getPosts = async () => {
       }
 
       const { content, title} = splitMessage(item.message)
+
+      // If we don't have content, or we don't have an image, continue
+      if (content.length == 0 || content[0] == '' || !item.full_picture) {
+        continue
+      }
 
       let payload = {
         title,

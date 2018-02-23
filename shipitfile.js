@@ -10,7 +10,7 @@ module.exports = function (shipit) {
       deployTo: '/var/www/depunaise-api',
       repositoryUrl: 'git@github.com:bingneef/DePunaise-Api.git',
       ignores: ['.git', 'node_modules', 'public/assets/post'],
-      keepReleases: 10,
+      keepReleases: 2,
       shallowClone: true,
       dirToCopy: '',
       yarn: {
