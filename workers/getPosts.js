@@ -12,7 +12,7 @@ const splitMessage = message => {
 
   return {
     title: parts.shift(),
-    content: parts.join('\n').split('\n').reduce(item => !item),
+    content: parts.join('\n').split('\n').filter(item => !!item),
   }
 }
 
