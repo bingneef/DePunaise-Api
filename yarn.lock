@@ -2299,7 +2299,7 @@ lodash.uniq@^3.2.2:
     lodash._isiterateecall "^3.0.0"
     lodash.isarray "^3.0.0"
 
-lodash@^3.2.0, lodash@^3.5.0:
+lodash@^3.10.1, lodash@^3.2.0, lodash@^3.5.0:
   version "3.10.1"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
@@ -2492,6 +2492,14 @@ node-bitmap@0.0.1:
 node-cron@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/node-cron/-/node-cron-1.2.1.tgz#8c90bc5dc723a56289b0786655ab4a1c4cb60368"
+
+node-gcm@^0.14.10:
+  version "0.14.10"
+  resolved "https://registry.yarnpkg.com/node-gcm/-/node-gcm-0.14.10.tgz#fd1e3357dab1c62115e6e2d342ac249fe05e7360"
+  dependencies:
+    debug "^3.1.0"
+    lodash "^3.10.1"
+    request "2.81.0"
 
 node-pre-gyp@^0.6.39:
   version "0.6.39"

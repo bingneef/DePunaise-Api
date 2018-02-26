@@ -4,7 +4,8 @@
     "start:home": "baseUrl=http://192.168.0.109 yarn start",
     "start:work": "baseUrl=http://10.0.1.55 yarn start",
     "db:seed": "babel-node db/seeds.js --exec babel-node",
-    "worker:getposts": "babel-node workers/getPosts.js --exec babel-node"
+    "worker:getposts": "babel-node workers/getPosts.js --exec babel-node",
+    "worker:sendNotification": "babel-node workers/sendNotification.js --exec babel-node"
   },
   "dependencies": {
     "apollo-engine": "^0.8.10",

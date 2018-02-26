@@ -4,6 +4,7 @@ import crypto from 'crypto'
 import sharp from 'sharp'
 import { Post } from '../models'
 import constants from '../config/constants'
+import { sendNotification } from '.'
 
 const { tokens: { facebookKey } } = constants
 
@@ -18,7 +19,7 @@ const splitMessage = message => {
 
 export const getPosts = async () => {
   let posts = []
-  let containsNewPost = false
+  let newPost = null
 
   try {
     const response = await axios.get('https://graph.facebook.com/v2.12/me', {
@@ -32,25 +33,30 @@ export const getPosts = async () => {
     let promises = []
 
     for (let item of data) {
+      // Guards
       if (item.message == undefined) {
+        continue
+      }
+
+      const { content, title} = splitMessage(item.message)
+      // If we don't have content, or we don't have an image, continue
+      if (content.length == 0 || content[0] == '' || !item.full_picture) {
         continue
       }
 
       let post = await Post.findOne({externalId: item.id})
 
-      let itemIsNew = false
       if (!post) {
         post = new Post({externalId: item.id})
-        itemIsNew = true
-        containsNewPost = true
+
+        if (!newPost) {
+          newPost = {
+            postId: post.id,
+            body: title,
+          }
+        }
       }
 
-      const { content, title} = splitMessage(item.message)
-
-      // If we don't have content, or we don't have an image, continue
-      if (content.length == 0 || content[0] == '' || !item.full_picture) {
-        continue
-      }
 
       let payload = {
         title,
@@ -73,8 +79,12 @@ export const getPosts = async () => {
 
     await Promise.all(promises)
 
-
-    if (!module.parent) process.exit(0)
+    if (newPost) {
+      const { body, postId } = newPost
+      await sendNotification({body, postId, exitAfter: true, topic: 'news'})
+    } else if (!module.parent) {
+      process.exit(0)
+    }
   } catch (e) {
     // Send to Sentry
     console.log(e)

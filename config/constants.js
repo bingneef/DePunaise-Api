@@ -13,5 +13,6 @@ export default {
   tokens: {
     facebookKey: process.env.FACEBOOK_KEY || '',
     apolloEngine: process.env.APOLLO_ENGINE_KEY || '',
+    googleCloudMessaging: process.env.GOOGLE_CLOUD_MESSAGING || '',
   },
 };
