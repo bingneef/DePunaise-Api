@@ -36,6 +36,7 @@
     "merge-graphql-schemas": "^1.4.0",
     "mongoose": "^5.0.6",
     "node-cron": "^1.2.1",
+    "node-gcm": "^0.14.10",
     "sharp": "^0.19.0",
     "subscriptions-transport-ws": "^0.9.5",
     "wade": "^0.3.3",
