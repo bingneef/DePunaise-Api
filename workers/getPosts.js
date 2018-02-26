@@ -110,6 +110,11 @@ const handleNewImages = async (url, id) => {
 
     let dimensions = [
       {
+        width: 1600,
+        height: 1200,
+        size: 'super-detail'
+      },
+      {
         width: 800,
         height: 600,
         size: 'detail'
