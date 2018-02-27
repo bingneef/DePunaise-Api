@@ -16,11 +16,6 @@ module.exports = async (ctx, next) => {
   try {
     let token = ctx.request.header['x-auth']
 
-    // In dev, set the token
-    if (!token && process.env.NODE_ENV === 'dev') {
-      token = 'testtest'
-    }
-
     if (!token) {
       ctx.currentUser = null
     } else {
