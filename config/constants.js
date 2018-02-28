@@ -14,5 +14,6 @@ export default {
     facebookKey: process.env.FACEBOOK_KEY || '',
     apolloEngine: process.env.APOLLO_ENGINE_KEY || '',
     googleCloudMessaging: process.env.GOOGLE_CLOUD_MESSAGING || '',
+    sentry: process.env.SENTRY_KEY || '',
   },
 };

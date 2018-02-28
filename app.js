@@ -20,7 +20,7 @@ import Router from 'koa-router'
 import router from './router'
 import AuthenticationMiddleware from './middleware/authentication'
 import DataLoadersMiddleware from './middleware/dataLoaders'
-
+import Raven from 'raven'
 import { initCron } from './cron'
 
 if (process.env.NODE_ENV === undefined) {
@@ -28,6 +28,9 @@ if (process.env.NODE_ENV === undefined) {
 }
 
 const { serverPort, baseUrl, version, tokens } = constants
+if (process.env.NODE_ENV !== 'dev' && tokens.sentry) {
+  Raven.config(tokens.sentry).install();
+}
 
 const app = new Koa()
 
