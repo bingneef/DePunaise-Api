@@ -5,6 +5,7 @@ type Post {
   content: [String]
   imageSized(size: String = "banner-sm"): Image
   excerpt(size: Int = 50): String
+  views: Int
   pubDate: String
   pubDateTimestamp: Float
 }

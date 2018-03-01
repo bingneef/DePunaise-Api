@@ -27,6 +27,7 @@ export const PostSchema = new Schema({
   title: String,
   content: [String],
   pubDate: Date,
+  views: Number,
   images: [ImageSchema],
 })
 
